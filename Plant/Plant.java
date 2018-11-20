@@ -16,6 +16,30 @@ public class Plant {
 
 		TransQueue tq; // Очередь заявок на транспорт
 		
+		// Попытка загрузки данных завода из файла
+		PlantData pd = new PlantData("plant.dat");
+		if (!pd.isEmpty()) {
+			// Файла нет - создаем новый завод
+			System.out.println("Создание нового завода");
+			su = new Supply("Поставка");
+			pr = new Production("Производство");
+			sh = new Shipment("Отгрузка");
+		} else {
+			// Файл существует - загружаем данные завода
+			su = new Supply(pd);
+			pr = new Production(pd);
+			sh = new Shipment(pd);
+		}
+		
+		// Сохранение состояние завода в файл plant.dat
+		pd.clear();
+		su.save(pd);
+		pr.save(pd);
+		sh.save(pd);
+		
+		
+		
+		
 	    // Попытка чтения состояния завода из файла plant.dat
 		try (Scanner sc = new Scanner(new File("plant.dat"))) {
 			// Файл существует - загружаем данные завода
@@ -23,21 +47,14 @@ public class Plant {
 			List<String> lines = new ArrayList<String>();
 			while (sc.hasNextLine()) lines.add(sc.nextLine());
 			String[] fs = lines.toArray(new String[0]);
-			su = new Supply(fs);
-			pr = new Production(fs);
-			sh = new Shipment(fs);
 		} catch(IOException e) {
 			// Файла нет - создаем новый завод
-			System.out.println("Создание нового завода");
-			su = new Supply("Поставка");
-			pr = new Production("Производство");
-			sh = new Shipment("Отгрузка");
+			
 		}
 		
 		// Сохранение состояние завода в файл plant.dat
 		try (FileWriter wr = new FileWriter("plant.dat")) {
 			String[] fs = new String[1000];
-			fs = su.save(fs);
 			
 			for(String str : fs)
 				if(str != null)
