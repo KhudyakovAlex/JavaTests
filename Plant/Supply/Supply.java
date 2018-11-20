@@ -9,22 +9,22 @@ public class Supply {
 		this.name = name;
 	}
 	
-	public Supply(String[] strs) {
-		for(String str : strs) {
-			if(str != null && str.substring(0, 2).equals("SU")) {
-				if(str.substring(3, 7).equals("NAME")) {
-					name = str.substring(8, str.length());
-					break;
-				}
-			}
-		}
+	public Supply(PlantData pd) {
+		//for(String str : strs) {
+		//	if(str != null && str.substring(0, 2).equals("SU")) {
+		//		if(str.substring(3, 7).equals("NAME")) {
+		//			name = str.substring(8, str.length());
+		//			break;
+		//		}
+		//	}
+		//}
 	}
 	
-	public String[] save(String[] strs) {
-		int i;
-		for(i = 0; strs[i] != null; i++);
-		strs[i] = "SU NAME " + name;
-		return strs;
+	public void save(PlantData pd) {
+		//int i;
+		//for(i = 0; strs[i] != null; i++);
+		//strs[i] = "SU NAME " + name;
+		//return strs;
 	}
 	
     public String getName() {

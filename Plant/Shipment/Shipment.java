@@ -9,9 +9,11 @@ public class Shipment {
 		this.name = name;
 	}
 	
-	public Shipment(String[] strs) {
+	public Shipment(PlantData pd) {
 	}
 	
+	public void save(PlantData pd) {
+	}	
 	
     public String getName() {
 		TransQueue tq = new TransQueue();

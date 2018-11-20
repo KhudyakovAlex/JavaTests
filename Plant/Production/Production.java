@@ -9,7 +9,10 @@ public class Production {
 		this.name = name;
 	}
 	
-	public Production(String[] strs) {
+	public Production(PlantData pd) {
+	}
+	
+	public void save(PlantData pd) {
 	}
 	
     public String getName() {

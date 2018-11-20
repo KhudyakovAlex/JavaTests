@@ -10,14 +10,19 @@ public class Plant {
     public static void main(String[] args) {
         System.out.println("===== Plant ======================================");
 	
-		Supply su; // Поставка
-		Production pr; // Производство
-		Shipment sh; // Отгрузка
+		Supply su; // Цех Поставка
+		Production pr; // Цех Производство
+		Shipment sh; // Цех Отгрузка
 
 		TransQueue tq; // Очередь заявок на транспорт
 		
 		// Попытка загрузки данных завода из файла
 		PlantData pd = new PlantData("plant.dat");
+		
+//for (String str : pd.getData("SU", "NAME")) {
+//	if (str != null) System.out.println("SU NAME " + str);
+//}
+		
 		if (!pd.isEmpty()) {
 			// Файла нет - создаем новый завод
 			System.out.println("Создание нового завода");
@@ -36,10 +41,11 @@ public class Plant {
 		su.save(pd);
 		pr.save(pd);
 		sh.save(pd);
+		pd.save();
 		
 		
 		
-		
+		/*
 	    // Попытка чтения состояния завода из файла plant.dat
 		try (Scanner sc = new Scanner(new File("plant.dat"))) {
 			// Файл существует - загружаем данные завода
@@ -61,6 +67,6 @@ public class Plant {
 					wr.write(str);
 		} catch(IOException e) {
 			System.out.println("Не удалось сохранить завод в файл");
-		}
+		}*/
 	}
 }
