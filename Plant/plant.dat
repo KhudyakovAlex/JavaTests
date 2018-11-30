@@ -1,1 +1,7 @@
 SU NAME Поставка
+SU STOCK 0
+PR NAME Производство
+PR STOCK 0
+SH NAME Отгрузка
+GA NAME Гараж
+PL CASH -3278
